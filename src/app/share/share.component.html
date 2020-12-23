@@ -1,0 +1,22 @@
+<ActionBar class="action-bar">
+    <!-- 
+    Use the NavigationButton as a side-drawer button in Android
+    because ActionItems are shown on the right side of the ActionBar
+    -->
+    <NavigationButton ios:visibility="collapsed" icon="res://menu" (tap)="onDrawerButtonTap()"></NavigationButton>
+    <!-- 
+    Use the ActionItem for IOS with position set to left. Using the
+    NavigationButton as a side-drawer button in iOS is not possible,
+    because its function is to always navigate back in the application.
+    -->
+    <ActionItem icon="res://navigation/menu" android:visibility="collapsed" (tap)="onDrawerButtonTap()"
+        ios.position="left">
+    </ActionItem>
+    <Label class="action-bar-title" text="Usuarios"></Label>
+</ActionBar>
+
+<StackLayout class="awesome  page page-content">
+    <TextField #texto="ngModel" [(ngModel)] ="nombreUsuario" hint="Ingresar nombre: " required minlen="4"></TextField>
+    <Label *ngIf="texto.hasError('required')" text="El nombre debe contener al menos 5 caractres"></Label>
+    <Button text="Buscar" (tap)="onButtonTap()" *ngIf="texto.valid"></Button>    
+<StackLayout>  
